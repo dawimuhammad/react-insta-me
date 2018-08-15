@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
 import { Container, Header, Content, Button, Text, Body } from 'native-base';
 import axios from 'axios'
-import Home from './components/Home'
+import Home from './src/screens/Home'
 
 const styles = StyleSheet.create({
 
@@ -53,7 +53,7 @@ export default class App extends Component {
         <Header>
           <Body>
             <Text>
-            Instagurem
+            Instagurems
             </Text>
           </Body>
         </Header>
