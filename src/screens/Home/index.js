@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { FlatList } from 'react-native'
 import axios from 'axios'
-import { Container, Button } from 'native-base';
+import { Container, Button, Text } from 'native-base';
 import Timeline from './Timeline'
-import Icon from 'react-native-vector-icons/FontAwesome'
+// import Icon from 'react-native-vector-icons/FontAwesome'
+
+import { addContentsToState } from '../../actions/actionContent'
+import { connect } from 'react-redux'
 
 class Home extends Component {
     constructor(props) {
@@ -28,7 +31,8 @@ class Home extends Component {
         })
         .then((response) => {
             this.saveContents(response.data.data)
-            // console.log(response.data.data, 'response data component did mount')
+            this.props.addContentsToState(response.data.data)
+            console.log(response.data.data, 'response data component did mount')
         })
         .catch((err) => {
             console.log(err)
@@ -39,7 +43,7 @@ class Home extends Component {
         return (
             <Container>
                 <FlatList
-                    data={this.state.contents}
+                    data={this.props.contents}
                     renderItem={({ item, index }) => 
                         <Timeline key={item.key} content={item} navigation={ this.props.navigation}/>}
                     keyExtractor={(item, index) => String(index) }
@@ -49,4 +53,17 @@ class Home extends Component {
     }
 }
 
-export default Home
+
+const mapStateToProps = state => {
+    return {
+      contents: state.contentReducers.contents
+    }
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      addContentsToState: (contents) => { dispatch(addContentsToState(contents)) },
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

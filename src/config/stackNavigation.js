@@ -1,8 +1,8 @@
-import { StackNavigator} from 'react-navigation'
+import { createStackNavigator} from 'react-navigation'
 import DetailScreen from '../screens/Home/Detail';
 import MainScreen from '../screens/Home';
 
-const stackNav = StackNavigator({
+const stackNav = createStackNavigator({
     Main: {
         screen: MainScreen,
         navigationOptions:({navigation}) => ({

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Image } from 'react-native';
 import { Card, CardItem, Thumbnail, Text, Left, Body, Button, Right } from 'native-base';
 import {  } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 import moment from 'moment'
 import styles from '../../../style'
 
@@ -16,6 +16,8 @@ class Timeline extends Component {
         const location = this.props.content.location
         const isLocationAlive = location === null
     
+        console.log('props content : ', this.props.content.user)
+
         return (
             <Card>
                 <CardItem>
@@ -38,7 +40,7 @@ class Timeline extends Component {
 
                 <CardItem>
                     <Left>
-                        <Icon name="heart" size={ 20 }></Icon>
+                        {/* <Icon name="heart" size={ 20 }></Icon> */}
                         <Text style={ styles.imageDesc }>{ this.props.content.likes.count } Likes</Text>
                     </Left>
                     <Right style={ styles.dateContainer }>

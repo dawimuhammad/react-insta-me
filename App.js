@@ -8,6 +8,8 @@
 
 import React, {Component} from 'react';
 import Tab from './src/config/navigation'
+import { Provider } from 'react-redux'
+import store from './src/store/store'
 
 export default class App extends Component {
   constructor() {
@@ -16,7 +18,9 @@ export default class App extends Component {
 
   render() {
     return (
+      <Provider store={store}>
         <Tab />
+      </Provider>
     );
   }
 }

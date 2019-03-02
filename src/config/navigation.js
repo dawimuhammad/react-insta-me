@@ -1,15 +1,15 @@
 import React from 'react'
-import { TabNavigator } from 'react-navigation'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { createBottomTabNavigator } from 'react-navigation'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 
-// import Home from '../screens/Home'
+import Home from '../screens/Home'
 import stackNav from './stackNavigation'
-import Profile from '../screens/Profile'
+import Profile from '../screens/Profile/index.js'
 
-const Tab = TabNavigator (
+const Tab = createBottomTabNavigator (
   {
     Home: {
-        screen: stackNav
+      screen: Home
     },
     Profile: {
       screen: Profile
@@ -27,7 +27,7 @@ const Tab = TabNavigator (
           iconName = `user`
         }
 
-        return <Icon name={ iconName } size={ 25 } color={ tintColor } />
+        // return <Icon name={ iconName } size={ 25 } color={ tintColor } />
       }
     }),
     tabBarIconOptions: {
